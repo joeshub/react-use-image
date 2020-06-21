@@ -1,9 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
 interface SizedTarget {
   width: number;
   height: number;
 }
-
-import { useEffect, useRef, useState } from 'react';
 
 const useImage = (src: string) => {
   const ready = useRef(true);

@@ -1,8 +1,24 @@
 import { useEffect, useRef, useState } from 'react';
+
+// interface Window extends EventTarget {
+declare interface Window extends EventTarget {
+  readonly window: Window & typeof globalThis;
+  Image: {
+    prototype: HTMLImageElement;
+    new (): HTMLImageElement;
+  };
+}
+
 interface SizedTarget {
   width: number;
   height: number;
 }
+
+// type WindowProps = React.HTMLProps<HTMLElement>;
+
+// interface WindowComponent extends React.StatelessComponent<WindowProps> {
+//     (props: WindowProps): React.ReactElement<HTMLElement>;
+// }
 
 const useImage = (src: string) => {
   const ready = useRef(true);
@@ -14,10 +30,14 @@ const useImage = (src: string) => {
   });
 
   useEffect(() => {
-    if (!src) {
+    const win: Window = window;
+    const { Image } = win;
+
+    if (!src || !Image) {
       return;
     }
-    const image = new window.Image();
+
+    const image = new Image();
 
     function isSizedTarget(t: any): t is SizedTarget {
       return t && t.width !== undefined && t.height !== undefined;

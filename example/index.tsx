@@ -20,11 +20,13 @@ const App = () => {
 
   return (
     <div>
-      {loaded
-        ? `Loaded width: ${width} height: ${height}`
-        : failed
-        ? 'Failed'
-        : 'Loading...'}
+      <h1>
+        {loaded
+          ? `react-use-image - width:${width} height:${height}`
+          : failed
+          ? 'Failed'
+          : 'Loading...'}
+      </h1>
       <img alt="example" src={imgSrc} />
     </div>
   );

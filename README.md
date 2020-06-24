@@ -34,7 +34,7 @@ Image URL, e.g. <https://foo.com/cat.jpg>
 
 ## return values
 
-```json
+```js
 {
   "loaded": false, // image found and loaded
   "failed": false, // image not found
